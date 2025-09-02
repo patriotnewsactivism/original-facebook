@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Timeline — oxfordoutlaw</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="/assets/css/site.css" rel="stylesheet">
+<link rel="manifest" href="/manifest.webmanifest">
+<script defer src="/assets/js/sw-register.js"></script>
+</head>
+<body>
+<header class="wrap">
+  <a href="/" class="brand">oxfordoutlaw</a>
+  <nav><a href="/timeline.html" aria-current="page">Timeline</a> <a href="/search.html">Search</a></nav>
+</header>
+
+<main class="wrap">
+  <h1>Timeline</h1>
+  <div id="timeline"></div>
+</main>
+
+<script type="module">
+import { loadIndex } from '/assets/js/index-loader.js';
+const mount = document.querySelector('#timeline');
+
+function escapeHtml(s){ return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[c])); }
+function groupByYear(items){
+  const map = new Map();
+  for (const it of items) {
+    const y = it.year || 'Unknown';
+    if (!map.has(y)) map.set(y, []);
+    map.get(y).push(it);
+  }
+  return [...map.entries()].sort((a,b)=>String(b[0]).localeCompare(String(a[0])));
+}
+
+(async function init(){
+  const idx = await loadIndex();
+  const groups = groupByYear(idx.items);
+  mount.innerHTML = groups.map(([year, list]) => `
+    <section class="year">
+      <h2>${year}</h2>
+      <ol class="timeline">
+        ${list.map(item => `
+          <li>
+            <a href="${item.url}">
+              <time>${item.date ? new Date(item.date).toLocaleDateString() : ''}</time>
+              ${item.img ? `<img class="mini" loading="lazy" src="${item.img}" alt="">` : ''}
+              <span>${escapeHtml((item.title||'').slice(0,120) || item.text.slice(0,120))}</span>
+              ${item.type ? `<em class="tag">${item.type}</em>` : ''}
+            </a>
+          </li>
+        `).join('')}
+      </ol>
+    </section>
+  `).join('');
+})();
+</script>
+</body>
+</html>
