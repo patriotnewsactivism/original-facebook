@@ -1,0 +1,170 @@
+/*
+ * Site styles for the OxfordOutlaw static backup enhancements.
+ *
+ * This file provides a minimal stylesheet to ensure the search
+ * and timeline interfaces render in a readable manner. If you
+ * already have an existing `site.css` file from the original
+ * backup, replace this file with that content to preserve
+ * the original styling. Otherwise, feel free to extend this
+ * stylesheet as needed.
+ */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: #0b0b0c;
+  color: #f0f0f0;
+  line-height: 1.5;
+}
+
+header, footer {
+  background: #121212;
+  padding: 1rem 0;
+}
+
+header .brand {
+  color: #49a6ff;
+  font-weight: bold;
+  text-decoration: none;
+  margin-right: 2rem;
+}
+
+nav a {
+  color: #a0d8ff;
+  margin-right: 1rem;
+  text-decoration: none;
+}
+
+nav a[aria-current="page"] {
+  text-decoration: underline;
+}
+
+.wrap {
+  width: 90%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.searchbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.searchbar input[type="search"],
+.searchbar select {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #333;
+  background: #1c1c1c;
+  color: #fff;
+}
+
+.results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.result {
+  background: #1a1a1b;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.result:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.result-link {
+  display: flex;
+  align-items: flex-start;
+  text-decoration: none;
+  color: inherit;
+  padding: 0.5rem;
+}
+
+.result img.thumb {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-right: 0.5rem;
+  border-radius: 4px;
+}
+
+.result .meta h3 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.result .meta .snip {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.result .meta .tags {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #aaa;
+}
+
+.tag {
+  display: inline-block;
+  margin-right: 0.3rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  background: #264a7d;
+  color: #fff;
+  font-weight: bold;
+}
+
+.muted {
+  color: #777;
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.timeline li {
+  margin-bottom: 0.5rem;
+}
+
+.timeline li a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #d0d0d0;
+}
+
+.timeline li a:hover {
+  color: #fff;
+}
+
+.timeline li time {
+  margin-right: 0.5rem;
+  font-size: 0.8rem;
+  color: #888;
+  min-width: 80px;
+}
+
+.timeline img.mini {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  margin-right: 0.5rem;
+  border-radius: 3px;
+}
+
+.foot {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 2rem;
+}
