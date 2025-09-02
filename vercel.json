@@ -1,0 +1,6 @@
+{
+  "headers": [
+    { "source": "/service-worker.js", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] },
+    { "source": "/data/search-index.json", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] }
+  ]
+}
