@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Search — oxfordoutlaw</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="/assets/css/site.css" rel="stylesheet">
+<link rel="manifest" href="/manifest.webmanifest">
+<script defer src="/assets/js/sw-register.js"></script>
+<!-- Fuse.js via CDN (UMD global: window.Fuse) -->
+<script defer src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+</head>
+<body>
+<header class="wrap">
+  <a href="/" class="brand">oxfordoutlaw</a>
+  <nav><a href="/timeline.html">Timeline</a> <a href="/search.html" aria-current="page">Search</a></nav>
+</header>
+
+<main class="wrap">
+  <h1>Search</h1>
+  <form class="searchbar" onsubmit="return false;">
+    <input id="q" type="search" placeholder="Search posts, photos, comments…" autofocus>
+    <select id="type">
+      <option value="">All types</option>
+      <option value="post">Posts</option>
+      <option value="photo">Photos</option>
+      <option value="video">Videos</option>
+      <option value="link">Links</option>
+      <option value="status">Status</option>
+    </select>
+    <select id="year"><option value="">All years</option></select>
+  </form>
+  <section id="results" class="results"></section>
+</main>
+
+<footer class="wrap foot">
+  <small>Offline ready. Index at <code>/data/search-index.json</code>.</small>
+</footer>
+
+<script type="module" src="/assets/js/search-ui.js"></script>
+</body>
+</html>
